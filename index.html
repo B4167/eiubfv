@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С 8 марта 🌸</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<canvas id="fireworksCanvas"></canvas>
+
+<div class="container">
+
+    <div class="intro-wrapper">
+        <div id="introText">
+            шнеле, пепе, ватафа, 1488, 52, чозабретта
+        </div>
+    </div>
+
+        <div class="music-controls">
+    <button id="musicToggle">Включить музыку ♫</button>
+</div>
+
+    <button id="openBtn">
+        Открыть поздравление сикс севен 🌸
+    </button>
+
+<div id="message" class="hidden">
+
+    <h1>С 8 марта 🌷</h1>
+
+    <p>
+        Екатерина, поздравляю вас с 8 марта.<br>
+        Желаю, чтобы все ваши желания и мечты сбылись.<br>
+        Надеюсь, мой подарок поднимет вам настроение и сделает ваш день лучше ❤️
+    </p>
+
+    <div class="gallery">
+        <button id="prev">⬅</button>
+
+        <img id="photo" src="images/photo1.jpg" alt="Фото">
+
+        <button id="next">➡</button>
+    </div>
+
+    <div id="photoCaption">
+        Это про тебя😊
+    </div>
+
+    <button id="backBtn">
+        Нажмешь эту кнопочку, вернешься назад
+    </button>
+
+</div>
+
+<div id="finalScreen" class="hidden">
+
+    <h1 class="finalTitle">
+        У меня не хватает айью че написать еще😭
+    </h1>
+
+    <p class="finalText">
+        С 8 марта тебя еще раз
+    </p>
+
+    <button id="restartBtn">
+        Посмотреть ещё раз ( не обязательно )
+    </button>
+
+</div>
+
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="audio/song.mp3" type="audio/mpeg">
+</audio>
+
+<script src="effects/fireworks.js"></script>
+<script src="effects/flowers.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
