@@ -16,6 +16,9 @@ const prev = document.getElementById("prev");
 const backBtn = document.getElementById("backBtn");
 const introPhoto = document.getElementById("introPhoto");
 
+const container = document.querySelector(".container");
+const musicControls = document.querySelector(".music-controls");
+
 
 let slides = [
     {
@@ -222,3 +225,66 @@ restartBtn.onclick = () => {
     photo.src = slides[index].image;
     photoCaption.textContent = slides[index].caption;
 };
+
+function isFireworksAllowed() {
+    const messageHidden = message.classList.contains("hidden");
+    const finalHidden = finalScreen.classList.contains("hidden");
+    return messageHidden && finalHidden;
+}
+
+
+
+function isInsideRect(x, y, element, padding = 0) {
+    if (!element) return false;
+
+    const rect = element.getBoundingClientRect();
+
+    return (
+        x >= rect.left - padding &&
+        x <= rect.right + padding &&
+        y >= rect.top - padding &&
+        y <= rect.bottom + padding
+    );
+}
+
+document.addEventListener("click", (event) => {
+    if (!isFireworksAllowed()) {
+        return;
+    }
+
+    if (event.target.closest("button")) {
+    return;
+}
+
+    const x = event.clientX;
+    const y = event.clientY;
+
+const centerSafeZone = {
+    left: window.innerWidth * 0.30,
+    right: window.innerWidth * 0.70,
+    top: window.innerHeight * 0.22,
+    bottom: window.innerHeight * 0.72
+};
+
+const insideCenterSafeZone =
+    x >= centerSafeZone.left &&
+    x <= centerSafeZone.right &&
+    y >= centerSafeZone.top &&
+    y <= centerSafeZone.bottom;
+
+const blocked =
+    insideCenterSafeZone ||
+    isInsideRect(x, y, button, 55) ||
+    isInsideRect(x, y, musicControls, 20) ||
+    isInsideRect(x, y, introPhoto, 45);
+
+    if (blocked) {
+        return;
+    }
+
+console.log("firework click", x, y);
+
+if (typeof createRandomFireworkAt === "function") {
+    createRandomFireworkAt(x, y);
+}
+});

@@ -61,6 +61,55 @@ function createBurst(x, y) {
     }
 }
 
+function createRingBurst(x, y) {
+    const colors = ["#ff2e63", "#ffffff", "#b266ff", "#ff7aa8"];
+    const count = 36;
+
+    for (let i = 0; i < count; i++) {
+        const angle = (Math.PI * 2 * i) / count;
+        const speed = 2.4 + Math.random() * 1.2;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        particles.push(new Particle(x, y, color, angle, speed));
+    }
+}
+
+function createHeartBurst(x, y) {
+    const colors = ["#ff2e63", "#ff4d88", "#ffffff", "#ff7aa8", "#b266ff"];
+    const scale = 7;
+
+    for (let t = 0; t < Math.PI * 2; t += 0.16) {
+        const hx = 16 * Math.pow(Math.sin(t), 3);
+        const hy =
+            13 * Math.cos(t) -
+            5 * Math.cos(2 * t) -
+            2 * Math.cos(3 * t) -
+            Math.cos(4 * t);
+
+        const tx = x + hx * scale;
+        const ty = y - hy * scale;
+
+        const angle = Math.atan2(ty - y, tx - x);
+        const speed = 2 + Math.random() * 1.5;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+
+        particles.push(new Particle(x, y, color, angle, speed));
+    }
+}
+
+function createStarBurst(x, y) {
+    const colors = ["#ffffff", "#ffd166", "#ff7aa8", "#b266ff"];
+    const rays = 10;
+
+    for (let i = 0; i < rays; i++) {
+        const angle = (Math.PI * 2 * i) / rays;
+        const speed = 3 + Math.random() * 1.4;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+
+        particles.push(new Particle(x, y, color, angle, speed));
+        particles.push(new Particle(x, y, color, angle + 0.08, speed * 0.75));
+    }
+}
+
 function animateFireworks() {
     fwCtx.clearRect(0, 0, fireworksCanvas.width, fireworksCanvas.height);
 
@@ -82,19 +131,35 @@ function animateFireworks() {
     }
 }
 
-function launchFireworks() {
-    const bursts = [
-        { x: window.innerWidth * 0.25, y: window.innerHeight * 0.32 },
-        { x: window.innerWidth * 0.5, y: window.innerHeight * 0.22 },
-        { x: window.innerWidth * 0.75, y: window.innerHeight * 0.32 }
+function ensureAnimation() {
+    if (!animationId) {
+        animateFireworks();
+    }
+}
+
+function createRandomFireworkAt(x, y) {
+    const variants = [
+        createBurst,
+        createRingBurst,
+        createHeartBurst,
+        createStarBurst
     ];
 
+    const variant = variants[Math.floor(Math.random() * variants.length)];
+    variant(x, y);
+    ensureAnimation();
+}
+
+function launchFireworks() {
+const bursts = [
+    { x: window.innerWidth * 0.16, y: window.innerHeight * 0.18 },
+    { x: window.innerWidth * 0.50, y: window.innerHeight * 0.14 },
+    { x: window.innerWidth * 0.84, y: window.innerHeight * 0.18 }
+];
     bursts.forEach((burst, index) => {
         setTimeout(() => {
             createBurst(burst.x, burst.y);
-            if (!animationId) {
-                animateFireworks();
-            }
+            ensureAnimation();
         }, index * 350);
     });
 }
