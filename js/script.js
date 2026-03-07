@@ -14,6 +14,7 @@ const next = document.getElementById("next");
 const prev = document.getElementById("prev");
 
 const backBtn = document.getElementById("backBtn");
+const introPhoto = document.getElementById("introPhoto");
 
 
 let slides = [
@@ -34,6 +35,13 @@ let slides = [
 let index = 0;
 
 button.onclick = () => {
+
+    document.body.classList.add("gallery-mode");
+
+    if (introPhoto) {
+        introPhoto.classList.add("to-background");
+    }
+
     button.style.display = "none";
     message.classList.remove("hidden");
     message.classList.add("show");
@@ -74,13 +82,20 @@ prev.onclick = () => {
 };
 
 backBtn.onclick = () => {
+
+    document.body.classList.remove("gallery-mode");
+    
     message.classList.remove("show");
     message.classList.add("hidden");
     button.style.display = "block";
 
-index = 0;
-photo.src = slides[index].image;
-photoCaption.textContent = slides[index].caption;
+    if (introPhoto) {
+        introPhoto.classList.remove("to-background");
+    }
+
+    index = 0;
+    photo.src = slides[index].image;
+    photoCaption.textContent = slides[index].caption;
 };
 
 let lastPetalTime = 0;
@@ -196,14 +211,14 @@ function createButtonSpark() {
 setInterval(createButtonSpark, 320);
 
 restartBtn.onclick = () => {
+    finalScreen.classList.add("hidden");
+    message.classList.remove("hidden");
 
-finalScreen.classList.add("hidden")
+    if (introPhoto) {
+        introPhoto.classList.add("to-background");
+    }
 
-message.classList.remove("hidden")
-
-index = 0
-
-photo.src = slides[index].image
-photoCaption.textContent = slides[index].caption
-
-}
+    index = 0;
+    photo.src = slides[index].image;
+    photoCaption.textContent = slides[index].caption;
+};

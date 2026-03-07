@@ -7,73 +7,101 @@
     <title>С 8 марта 🌸</title>
 
     <link rel="stylesheet" href="css/style.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
 <canvas id="fireworksCanvas"></canvas>
 
+<div class="bg-decor">
+    <div class="blur blur-1"></div>
+    <div class="blur blur-2"></div>
+    <div class="blur blur-3"></div>
+    <div class="stars"></div>
+</div>
+
 <div class="container">
 
     <div class="intro-wrapper">
+        <div class="intro-badge"></div>
+
         <div id="introText">
-            шнеле, пепе, ватафа, 1488, 52, чозабретта
+            шнеле, пепе, ватафа, 1488, 52, чозабретта.<br>
         </div>
     </div>
 
-        <div class="music-controls">
-    <button id="musicToggle">Включить музыку ♫</button>
-</div>
+    <div class="intro-photo" id="introPhoto">
+        <img src="images/photo4.jpg" alt="Екатерина">
+    </div>
 
     <button id="openBtn">
-        Открыть поздравление сикс севен 🌸
+        Открыть поздравление сикс севен
     </button>
 
-<div id="message" class="hidden">
-
-    <h1>С 8 марта 🌷</h1>
-
-    <p>
-        Екатерина, поздравляю вас с 8 марта.<br>
-        Желаю, чтобы все ваши желания и мечты сбылись.<br>
-        Надеюсь, мой подарок поднимет вам настроение и сделает ваш день лучше ❤️
-    </p>
-
-    <div class="gallery">
-        <button id="prev">⬅</button>
-
-        <img id="photo" src="images/photo1.jpg" alt="Фото">
-
-        <button id="next">➡</button>
+    <div class="music-controls">
+        <button id="musicToggle">Включить музыку ♫</button>
     </div>
 
-    <div id="photoCaption">
-        Это про тебя😊
+    <div id="message" class="hidden">
+
+        <div class="message-card">
+            <h1>С 8 марта 🌷</h1>
+
+            <p>
+                Екатерина, поздравляю вас с 8 марта.<br>
+                Желаю, чтобы все ваши желания и мечты сбылись.<br>
+                 Надеюсь, мой подарок поднимет вам настроение и сделает ваш день лучше 😁
+            </p>
+
+            <div class="gallery-card">
+                <div class="gallery">
+                    <button id="prev" aria-label="Предыдущее фото">⬅</button>
+
+                    <div class="photo-frame">
+                        <img id="photo" src="images/photo1.jpg" alt="Фото">
+                    </div>
+
+                    <button id="next" aria-label="Следующее фото">➡</button>
+                </div>
+
+                <div class="gallery-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <div id="photoCaption">
+                    Это про тебя😊
+                </div>
+            </div>
+
+            <button id="backBtn">
+                Вернуться назад
+            </button>
+        </div>
+
     </div>
 
-    <button id="backBtn">
-        Нажмешь эту кнопочку, вернешься назад
-    </button>
+    <div id="finalScreen" class="hidden">
 
-</div>
+        <div class="final-card">
+            <div class="final-glow"></div>
 
-<div id="finalScreen" class="hidden">
+            <h1 class="finalTitle">
+                 У меня не хватает айью что то написать еще 😭
+            </h1>
 
-    <h1 class="finalTitle">
-        У меня не хватает айью че написать еще😭
-    </h1>
+            <p class="finalText">
+                Спасибо тебе за тепло, за настроение и за ту особенную атмосферу, которую ты создаёшь своим присутствием💖<br>
+            </p>
 
-    <p class="finalText">
-        С 8 марта тебя еще раз
-    </p>
+            <button id="restartBtn">
+                Посмотреть ещё раз ✨
+            </button>
+        </div>
 
-    <button id="restartBtn">
-        Посмотреть ещё раз ( не обязательно )
-    </button>
-
-</div>
+    </div>
 
 </div>
 
